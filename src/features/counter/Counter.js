@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import styles from './Counter.module.css';
+/*
 import {
   decrement,
   increment,
@@ -8,7 +10,20 @@ import {
   incrementIfOdd,
   selectCount,
 } from './counterSlice';
-import styles from './Counter.module.css';
+/*/
+import {
+  ReducerActions,
+  ReducerSelectors
+} from '../../saga/reducer';
+const {
+  increment,
+  decrement,
+  incrementByAmount,
+  incrementAsync,
+  incrementIfOdd,
+} = ReducerActions;
+const { selectCount } = ReducerSelectors;
+//*/
 
 export function Counter() {
   const count = useSelector(selectCount);
@@ -31,7 +46,10 @@ export function Counter() {
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={() => dispatch(increment())}
+          onClick={() => {
+            console.log("+ pressed");
+            dispatch(increment());
+          }}
         >
           +
         </button>
